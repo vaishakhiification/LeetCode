@@ -1,0 +1,17 @@
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if (needle.trim().equals("")){
+            return 0;
+        }        
+        int nl = needle.length();
+        int n = haystack.length();
+        for(int i=0; i<n; i++){
+            if (nl <= (n-i)){
+                if (haystack.substring(i, Math.min(i + nl, n)).equals(needle)){
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+}
