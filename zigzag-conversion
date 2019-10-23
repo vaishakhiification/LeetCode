@@ -1,0 +1,23 @@
+class Solution {
+    public String convert(String s, int numRows) {  
+        if (numRows <= 1){
+            return s;
+        }
+        StringBuilder f = new StringBuilder();
+        int limit = (numRows * 2 -3);
+        for (int i=0; i<numRows; i++){
+            int index = i;   
+            boolean dir = true;
+            while(index < s.length() && index >= 0){
+                f.append(s.charAt(index));
+                if (i==0 || i==numRows -1){
+                    index += limit +1;
+                }else{
+                    index += limit - 2*( dir ? i : (numRows-i-1)) +1;
+                    dir = !dir;
+                }                
+            }
+        }
+        return f.toString();
+    }
+}
